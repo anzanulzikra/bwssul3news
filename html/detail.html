@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita - BWS Sulawesi III Palu</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Boy CDN -->
+    <script src="https://unpkg.com/@boy-org/boy@latest/dist/boy.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'blue-sda': '#243365',
+                        'yellow-500': '#FFB703',
+                        'zinc-500': '#71717A',
+                        'green-500': '#22C55E',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- Main Container -->
+    <div class="min-h-screen bg-gray-50">
+        <!-- Header/Navigation -->
+        <header class="bg-white shadow-sm border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <!-- Logo Section -->
+                    <div class="flex items-center gap-3">
+                        <img src="assets/images/logo.png" alt="Logo BWS Sulawesi III Palu" class="w-[250px] h-[42px] lg:w-[307px] lg:h-[52px] object-contain">
+                    </div>
+                    
+                    <!-- Navigation Menu -->
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a href="#" class="text-blue-sda hover:text-blue-600 transition-colors">Beranda</a>
+                        <div class="relative group">
+                            <button class="flex items-center gap-1 text-blue-sda hover:text-blue-600 transition-colors">
+                                Profil
+                                <img src="assets/icons/chevron-down.svg" alt="Dropdown" class="w-4 h-4">
+                            </button>
+                        </div>
+                        <div class="relative group">
+                            <button class="flex items-center gap-1 text-blue-sda hover:text-blue-600 transition-colors">
+                                Layanan
+                                <img src="assets/icons/chevron-down.svg" alt="Dropdown" class="w-4 h-4">
+                            </button>
+                        </div>
+                        <div class="relative group">
+                            <button class="flex items-center gap-1 text-blue-sda hover:text-blue-600 transition-colors">
+                                Berita
+                                <img src="assets/icons/chevron-down.svg" alt="Dropdown" class="w-4 h-4">
+                            </button>
+                        </div>
+                        <div class="relative group">
+                            <button class="flex items-center gap-1 text-blue-sda hover:text-blue-600 transition-colors">
+                                Informasi Publik
+                                <img src="assets/icons/chevron-down.svg" alt="Dropdown" class="w-4 h-4">
+                            </button>
+                        </div>
+                        <div class="relative group">
+                            <button class="flex items-center gap-1 text-blue-sda hover:text-blue-600 transition-colors">
+                                Publikasi
+                                <img src="assets/icons/chevron-down.svg" alt="Dropdown" class="w-4 h-4">
+                            </button>
+                        </div>
+                    </nav>
+                    
+                    <!-- Search Input -->
+                    <div class="hidden md:flex items-center">
+                        <div class="w-[250px] h-[40px] px-2 py-2 bg-white rounded-lg border-2 border-yellow-500 flex items-center gap-2">
+                            <img src="assets/icons/search.svg" alt="Search" class="w-5 h-5">
+                            <input type="text" placeholder="Cari Berita" class="w-full text-blue-sda text-sm font-normal outline-none pr-2">
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-blue-sda">
+                        <img src="assets/icons/menu.svg" alt="Menu" class="w-6 h-6">
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobileMenu" class="fixed inset-0 z-50 bg-white flex flex-col p-8 space-y-8 transition-transform duration-300 transform -translate-x-full md:hidden">
+            <button id="closeMobileMenu" class="self-end mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-blue-sda">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <nav class="flex flex-col gap-6">
+                <a href="#" class="text-blue-sda text-lg font-medium">Beranda</a>
+                <a href="#" class="text-blue-sda text-lg font-medium">Profil</a>
+                <a href="#" class="text-blue-sda text-lg font-medium">Layanan</a>
+                <a href="#" class="text-blue-sda text-lg font-medium">Berita</a>
+                <a href="#" class="text-blue-sda text-lg font-medium">Informasi Publik</a>
+                <a href="#" class="text-blue-sda text-lg font-medium">Publikasi</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto px-4 py-8" data-aos="fade-up">
+            <!-- Breadcrumb -->
+            <div class="mb-8">
+                <div class="flex items-center gap-2 flex-wrap">
+                    <div class="flex items-center gap-1">
+                        <img src="assets/icons/home.svg" alt="Home" class="w-4 h-4">
+                        <span class="text-yellow-500 text-sm font-normal">Beranda</span>
+                    </div>
+                    <span class="text-blue-sda text-sm font-normal">/</span>
+                    <span class="text-yellow-500 text-sm font-normal">Berita</span>
+                    <span class="text-blue-sda text-sm font-normal">/</span>
+                    <span class="text-blue-sda text-sm font-normal">Tim Pemantauan Pengawasan SDA BWS Sulawesi III Palu melakukan inspeksi lapangan terhadap laporan pengrusakan prasarana SDA berupa penutup drainase</span>
+                </div>
+                
+                <!-- Back Button -->
+                <button class="mt-4 h-10 px-4 rounded-lg inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 transition-colors">
+                    <img src="assets/icons/arrow-left.svg" alt="Back" class="w-5 h-5">
+                    <span class="text-blue-sda text-sm font-normal">Kembali</span>
+                </button>
+            </div>
+
+            <!-- Article Content -->
+            <article class="max-w-4xl mx-auto">
+                <!-- Article Header -->
+                <header class="mb-8">
+                    <h1 class="text-3xl font-medium text-blue-sda leading-9 mb-4">
+                        Tim Pemantauan Pengawasan SDA BWS Sulawesi III Palu melakukan inspeksi lapangan terhadap laporan pengrusakan prasarana SDA berupa penutup drainase
+                    </h1>
+                    <p class="text-lg font-normal text-gray-700">Palu, 26 Juni 2025</p>
+                </header>
+
+                <!-- Featured Image -->
+                <div class="mb-8">
+                    <img src="assets/images/thumbnair-detail1.jpg" alt="Featured Image" class="w-full h-auto rounded-lg">
+                </div>
+
+                <!-- Article Body -->
+                <div class="prose prose-lg max-w-none mb-8">
+                    <h2 class="text-2xl font-medium text-blue-sda mb-4">Monitoring dan Identifikasi Pasca Banjir di Kota Palu</h2>
+                    <h3 class="text-xl font-medium text-blue-sda mb-4">BWS Sulawesi III Palu Lakukan Penanganan di Lokasi Terdampak</h3>
+                    
+                    <p class="text-lg leading-7 text-gray-700 mb-6">
+                        Guyuran hujan deras yang melanda Kota Palu belakangan ini, dan puncaknya di hari Jum'at tanggal 24 April 2025 dengan intensitas dan curah hujan yg tinggi, mengakibatkan bencana banjir di sejumlah kawasan strategis. Situasi ini segera mendapat perhatian dari Balai Wilayah Sungai (BWS) Sulawesi III Palu.
+                    </p>
+                    
+                    <p class="text-lg leading-7 text-gray-700 mb-6">
+                        Menyikapi kondisi tersebut, Tim Satuan Tugas Bencana BWS Sulawesi III Palu diterjunkan ke lapangan untuk melakukan penanganan cepat dan mengurangi dampak yang ditimbulkan, terutama di kawasan terdampak seperti Jalan Puenjidi, Kelurahan Kabonena, Kecamatan Palu Barat, serta Jalan Soekarno-Hatta, Kelurahan Tondo, Kecamatan Mantikulore.
+                    </p>
+                    
+                    <p class="text-lg leading-7 text-gray-700 mb-6">
+                        Kepala BWS Sulawesi III Palu, Dedi Yudha Lesmana, S.T., M.T. bersama jajarannya turun langsung ke lokasi untuk melakukan monitoring dan identifikasi penyebab banjir. Berdasarkan hasil sementara di lapangan, banjir terjadi akibat kombinasi antara tingginya curah hujan, longsoran material dari daerah hulu sungai, serta penyempitan alur sungai di bagian hilir.
+                    </p>
+                    
+                    <p class="text-lg leading-7 text-gray-700 mb-6">
+                        Akibatnya, aliran air tidak tertampung secara optimal, meluap ke wilayah pemukiman, membawa lumpur, material kayu, serta sedimen lainnya yang memperparah kondisi banjir di area permukiman dan jalan utama.
+                    </p>
+                    
+                    <p class="text-lg leading-7 text-gray-700 mb-6">
+                        Secara spesifik, di wilayah Jalan Soekarno-Hatta, Kecamatan Mantikulore, banjir terjadi akibat tingginya intensitas hujan di kawasan perbukitan atau gunung di sekitarnya. Kondisi geografis tersebut menyebabkan aliran air deras turun ke wilayah hilir. Namun, karena alur pembuangan air di daerah hilir hanya berupa drainase berkapasitas kecil, limpasan air tidak tertampung dengan baik, sehingga meluap hingga ke belakang kompleks Mapolda Sulawesi Tengah dan membanjiri ruas Jalan Raya. Idealnya, aliran air ini seharusnya bermuara langsung ke badan sungai.
+                    </p>
+                    
+                    <div class="mt-8">
+                        <p class="text-lg font-medium text-blue-sda">#SigapMembangunNegeriuntukRakyat</p>
+                        <p class="text-lg font-medium text-blue-sda">#MengelolaAirUntukNegeri</p>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <hr class="border-2 border-zinc-500 my-8">
+
+                <!-- Photo Gallery -->
+                <section class="mb-8">
+                    <h2 class="text-2xl font-medium text-blue-sda mb-6">Foto Kegiatan</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <img src="assets/images/thumbnair-photo.jpg" alt="Kegiatan 1" class="w-[300px] h-[168px] object-cover rounded-lg">
+                        <img src="assets/images/thumbnair-photo.jpg" alt="Kegiatan 2" class="w-[300px] h-[168px] object-cover rounded-lg">
+                        <img src="assets/images/thumbnair-photo.jpg" alt="Kegiatan 3" class="w-[300px] h-[168px] object-cover rounded-lg">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <img src="assets/images/thumbnair-photo.jpg" alt="Kegiatan 4" class="w-[300px] h-[168px] object-cover rounded-lg">
+                        <img src="assets/images/thumbnair-photo.jpg" alt="Kegiatan 5" class="w-[300px] h-[168px] object-cover rounded-lg">
+                    </div>
+                </section>
+
+                <!-- Divider -->
+                <hr class="border-2 border-zinc-500 my-8">
+
+                <!-- Share Section -->
+                <section class="mb-8">
+                    <h2 class="text-2xl font-medium text-blue-sda mb-6">Bagikan Postingan Ini</h2>
+                    <div class="flex gap-6">
+                        <button class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <img src="assets/icons/facebook.svg" alt="Facebook" class="w-6 h-6">
+                        </button>
+                        <button class="w-12 h-12 bg-black rounded-lg flex items-center justify-center hover:bg-gray-800 transition-colors">
+                            <img src="assets/icons/twitter.svg" alt="Twitter" class="w-6 h-6">
+                        </button>
+                        <button class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center hover:bg-green-600 transition-colors">
+                            <img src="assets/icons/instagram.svg" alt="Instagram" class="w-6 h-6">
+                        </button>
+                    </div>
+                </section>
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 py-10">
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <!-- Footer Left -->
+                    <div class="space-y-8">
+                        <div class="flex items-center gap-3">
+                            <img src="assets/images/Logo-footer.png" alt="Logo PU" class="w-[425px] h-[74px] object-contain">
+                        </div>
+                        
+                        <p class="text-base text-blue-sda leading-relaxed">
+                            Jl. Abdurachman Saleh No. 230 Palu Provinsi Sulawesi Tengah, Indonesia<br>
+                            Telp. (0451) 482147      Fax. (0451) 482101
+                        </p>
+                        
+                        <div class="flex gap-6">
+                            <a href="#" class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                                <img src="assets/icons/facebook.svg" alt="Facebook" class="w-4 h-4">
+                            </a>
+                            <a href="#" class="w-8 h-8 bg-gradient-to-r from-yellow-400 via-red-500 to-purple-600 rounded flex items-center justify-center">
+                                <img src="assets/icons/instagram.svg" alt="Instagram" class="w-4 h-4">
+                            </a>
+                            <a href="#" class="w-8 h-8 bg-black rounded flex items-center justify-center">
+                                <img src="assets/icons/twitter.svg" alt="Twitter" class="w-4 h-4">
+                            </a>
+                            <a href="#" class="w-8 h-8 bg-red-600 rounded flex items-center justify-center">
+                                <img src="assets/icons/youtube.svg" alt="YouTube" class="w-4 h-4">
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Footer Right -->
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Services -->
+                        <div class="space-y-6">
+                            <h4 class="text-base font-medium text-blue-sda">Layanan</h4>
+                            <div class="space-y-2">
+                                <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">e-SISDA</a>
+                                <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">SIHKA</a>
+                                <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">Sistem Informasi Geografis</a>
+                                <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">Kaledo</a>
+                                <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">E-Rekomtek</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional Services -->
+                        <div class="space-y-6">
+                            <div class="space-y-2">
+                                <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">Whistleblowing PU</a>
+                                <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">SP4N - Lapor!</a>
+                                <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">EARR</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Visitor Data -->
+                        <div class="space-y-4">
+                            <h4 class="text-base font-medium text-blue-sda">Data Pengunjung</h4>
+                            <img src="assets/images/data-pengujung.jpg" alt="Visitor Data" class="w-48 h-44">
+                            <img src="assets/images/logo-vkan.png" alt="KAN Logo" class="w-36 h-16">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="bg-blue-sda px-4 py-3">
+                <div class="max-w-7xl mx-auto">
+                    <p class="text-white text-xs font-normal text-center">
+                        Copyright © 2025. Balai Wilayah Sungai Sulawesi III Palu. All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Boy.js Initialization -->
+    <script>
+        // Initialize Boy.js if needed
+        if (typeof Boy !== 'undefined') {
+            // Boy.js specific configurations can go here
+            console.log('Boy.js loaded successfully');
+        }
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('button.md\\:hidden');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
+            if (mobileMenuBtn && mobileMenu && closeMobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.remove('-translate-x-full');
+                });
+                closeMobileMenu.addEventListener('click', function() {
+                    mobileMenu.classList.add('-translate-x-full');
+                });
+                mobileMenu.addEventListener('click', function(e) {
+                    if (e.target === mobileMenu) {
+                        mobileMenu.classList.add('-translate-x-full');
+                    }
+                });
+            }
+        });
+    </script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg width="640" height="720" viewBox="0 0 640 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="640" height="720" fill="#E5E7EB"/>
+    <rect x="20" y="20" width="600" height="680" fill="#D1D5DB" stroke="#9CA3AF" stroke-width="2"/>
+    <text x="320" y="360" text-anchor="middle" fill="#6B7280" font-size="24" font-weight="bold" font-family="Arial, sans-serif">Hero Image</text>
+    <text x="320" y="390" text-anchor="middle" fill="#9CA3AF" font-size="16" font-family="Arial, sans-serif">640x720</text>
+</svg> 

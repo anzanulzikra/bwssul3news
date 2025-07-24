@@ -1,0 +1,8 @@
+<svg width="332" height="217" viewBox="0 0 332 217" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="332" height="217" fill="#F3F4F6"/>
+    <rect x="10" y="10" width="312" height="197" fill="#E5E7EB" stroke="#D1D5DB" stroke-width="2"/>
+    <circle cx="166" cy="108.5" r="30" fill="#6B7280" opacity="0.8"/>
+    <polygon points="156,98.5 156,118.5 176,108.5" fill="white"/>
+    <text x="166" y="160" text-anchor="middle" fill="#6B7280" font-size="16" font-weight="bold" font-family="Arial, sans-serif">Video Thumbnail</text>
+    <text x="166" y="180" text-anchor="middle" fill="#9CA3AF" font-size="12" font-family="Arial, sans-serif">332x217</text>
+</svg> 

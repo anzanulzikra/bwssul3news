@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Apply Inter font to entire Filament application */
+.fi-body,
+.fi-body *,
+.fi-layout,
+.fi-layout *,
+.fi-sidebar,
+.fi-sidebar *,
+.fi-main,
+.fi-main *,
+.fi-header,
+.fi-header * {
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Sidebar menu specific styling */
+.fi-sidebar-item-label {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important; /* Regular weight */
+}
+
+.fi-sidebar-item-icon {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important; /* Regular weight */
+}
+
+.fi-sidebar-header {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important; /* Regular weight */
+}
+
+:root {
+  --yellow-50: oklch(0.987 0.026 102.212);
+  --yellow-100: oklch(0.973 0.071 103.193);
+  --yellow-200: oklch(0.945 0.129 101.54);
+  --yellow-300: oklch(0.905 0.182 98.111);
+  --yellow-400: oklch(0.852 0.199 91.936);
+  --yellow-500: oklch(0.795 0.184 86.047);
+  --yellow-600: oklch(0.681 0.162 75.834);
+  --yellow-700: oklch(0.554 0.135 66.442);
+  --yellow-800: oklch(0.476 0.114 61.907);
+  --yellow-900: oklch(0.421 0.095 57.708);
+}
+
+.dark .fi-body .fi-layout .fi-sidebar{
+  background-color: #000000;
+}
+
+.fi-body .fi-layout .fi-sidebar{
+  background-color: #FDEED3;
+}
+
+fi-sidebar-nav{
+  background-color: #FDEED3!important;
+}
+
+
+.fi-body .fi-layout .fi-main-ctn {
+  background-image: url('../../bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  isolation: isolate;
+}
+
+.fi-body .fi-layout .fi-main-ctn::before {
+  content: '';
+  inset: 0;
+  background-color: white;
+  opacity: 0.6;
+  position: absolute;
+  z-index: -1;
+}
+
+.dark .fi-body .fi-main-ctn::before {
+  background-color: black;
+  opacity: 0.2;
+}
+
+.fi-sidebar-item .fi-sidebar-item-button {
+  padding: 0.5rem;
+}
+.fi-ta-header-toolbar{
+  background-color: var(--yellow-500);
+}
+
+.dark .fi-ta-header-toolbar{
+  background-color: var(--yellow-600);
+  color: white;
+}
+.fi-sidebar-item.fi-sidebar-item-active .fi-sidebar-item-button {
+  background-color: #ffb706;
+  border-right: 4px solid var(--yellow-600);
+}
+.fi-sidebar-header{
+  background-color: #FDEED3!important;
+}
+.dark .fi-sidebar-header{
+  background-color: #000!important;
+}
+
+
+.dark .fi-sidebar-item-active .fi-sidebar-item-button {
+  background-color: oklch(20.5% 0 0);
+  color: white;
+}
+
+
+
+
+.fi-sidebar-item.fi-active .fi-sidebar-item-label {
+  color: white !important;
+}
+
+.fi-sidebar-item.fi-active .fi-sidebar-item-icon {
+  color: white !important;
+}
+
+.dark .fi-sidebar-item-label{
+  color: white;
+}
+
+
+
+.fi-sidebar-item:hover .fi-sidebar-item-label {
+  color: white !important;
+}
+
+.dark .fi-sidebar-item:hover .fi-sidebar-item-label {
+  color: white !important;
+}
+
+.fi-sidebar-item:hover .fi-sidebar-item-icon {
+  color: white !important;
+}
+
+.dark .fi-sidebar-item:hover .fi-sidebar-item-icon {
+  color: white !important;
+}
+
+.fi-sidebar-item.fi-sidebar-item-active .fi-sidebar-item-button,
+.fi-sidebar-item:hover .fi-sidebar-item-button {
+  background-color: #ffb706;
+  border-right: 4px solid var(--yellow-600);
+}
+
+.dark .fi-sidebar-item:hover .fi-sidebar-item-button {
+  background-color: #ffb706;
+  border-right: 4px solid var(--yellow-600);
+}
+
+.fi-sidebar-item-icon {
+  color:#243365 !important;
+}
+
+.dark .fi-sidebar-item-icon {
+  color:#FDEED3 !important;
+}
+
+.fi-avatar-icon {
+  color: var(--yellow-800)!important;
+}
+
+.dark .fi-avatar-icon {
+  color: var(--yellow-200);
+}
+.fi-logo.flex {
+  width: 240px !important;
+  height: 38px !important;
+}
+.fi-logo.flex img {
+  width: 340px !important;
+  height: 50px !important;
+}
+.dark .fi-logo.flex {
+  width: 240px !important;
+  height: 38px !important;
+  content: url('/logo-dark.svg');
+
+}
+.dark .fi-logo.flex img {
+  width: 340px !important;
+  height: 50px !important;
+  content: url('/logo-dark.svg');
+}
+
+.fi-section-header{
+ 
+}
+
+
+.fi-logo.flex img {
+  content: url('logo.svg');
+}
+
+/* Logo styling for dark mode */
+.dark .fi-logo.flex img {
+  content: url('logo-dark.svg');
+}
+.fi-ta-header-cell tr{
+  background-color: #FDEED3!important;
+}
+
+/* Ubah warna thead tabel Filament */
+.fi-ta-table thead,
+.fi-ta-table thead tr,
+.fi-ta-table thead th {
+  background-color: #FDEED3 !important;
+}
+
+/* Jika ingin lebih spesifik hanya untuk baris judul */
+.fi-ta-table thead tr {
+  background-color: #FDEED3 !important;
+}
+
+/* Jika ingin menghilangkan warna default pada dark mode */
+.dark .fi-ta-table thead tr {
+  background-color: #FDEED3 !important;
+}
+
+/* Untuk dark mode, gunakan warna kuning yang lebih gelap */
+.dark .fi-ta-table thead,
+.dark .fi-ta-table thead tr,
+.dark .fi-ta-table thead th {
+  background-color: #242424 !important; /* yellow-400 */
+}
+
+.fi-icon-btn-icon{
+  color: #f1d8a9;
+}
+
+.fi-section-header {
+  background-color: #f1d8a9!important;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+/* Untuk mode gelap (dark mode) */
+.dark .fi-section-header {
+  background-color: #ffb706!important;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.fi-simple-layout { 
+  ackground-color: #f1d8a9!important;
+}
+
+.fi-simple-main {
+  ackground-color: #f1d8a9!important;
+} 

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BWS Sulawesi III Palu - Mengelola Air untuk Negeri</title>
+    <meta name="description" content="Website resmi Balai Wilayah Sungai Sulawesi III Palu. Informasi, berita, layanan, dan publikasi seputar pengelolaan sumber daya air di Sulawesi Tengah.">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Boy CDN -->
+    <script src="https://unpkg.com/@boy-org/boy@latest/dist/boy.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    colors: {
+                        'blue-sda': '#243365',
+                        'yellow-accent': '#FFB703',
+                        'zinc': {
+                            100: '#f4f4f5',
+                            500: '#71717a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-inter overflow-x-hidden">
+    <!-- Header Navigation -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Section -->
+                <div class="flex items-center gap-3">
+                    <img src="assets/images/logo.png" alt="Logo BWS Sulawesi III Palu" class="w-[250px] h-[42px] lg:w-[307px] lg:h-[52px] object-contain">
+                </div>
+                
+                <!-- Navigation Menu -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#" class="text-blue-sda hover:text-blue-600 transition-colors">Beranda</a>
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 text-blue-sda hover:text-blue-600 transition-colors">
+                            Profil
+                            <img src="assets/icons/chevron-down.svg" alt="Dropdown" class="w-4 h-4">
+                        </button>
+                    </div>
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 text-blue-sda hover:text-blue-600 transition-colors">
+                            Layanan
+                            <img src="assets/icons/chevron-down.svg" alt="Dropdown" class="w-4 h-4">
+                        </button>
+                    </div>
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 text-blue-sda hover:text-blue-600 transition-colors">
+                            Berita
+                            <img src="assets/icons/chevron-down.svg" alt="Dropdown" class="w-4 h-4">
+                        </button>
+                    </div>
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 text-blue-sda hover:text-blue-600 transition-colors">
+                            Informasi Publik
+                            <img src="assets/icons/chevron-down.svg" alt="Dropdown" class="w-4 h-4">
+                        </button>
+                    </div>
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 text-blue-sda hover:text-blue-600 transition-colors">
+                            Publikasi
+                            <img src="assets/icons/chevron-down.svg" alt="Dropdown" class="w-4 h-4">
+                        </button>
+                    </div>
+                </nav>
+                
+                <!-- Search Input -->
+                <div class="hidden md:flex items-center">
+                    <div class="w-[250px] h-[40px] px-2 py-2 bg-white rounded-lg border-2 border-yellow-500 flex items-center gap-2">
+                        <img src="assets/icons/search.svg" alt="Search" class="w-5 h-5">
+                        <input type="text" placeholder="Cari Berita" class="w-full text-blue-sda text-sm font-normal outline-none pr-2">
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-blue-sda">
+                    <img src="assets/icons/menu.svg" alt="Menu" class="w-6 h-6">
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 bg-white flex flex-col p-8 space-y-8 transition-transform duration-300 transform -translate-x-full md:hidden">
+        <button id="closeMobileMenu" class="self-end mb-8">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-blue-sda">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <nav class="flex flex-col gap-6">
+            <a href="#" class="text-blue-sda text-lg font-medium">Beranda</a>
+            <a href="#" class="text-blue-sda text-lg font-medium">Profil</a>
+            <a href="#" class="text-blue-sda text-lg font-medium">Layanan</a>
+            <a href="#" class="text-blue-sda text-lg font-medium">Berita</a>
+            <a href="#" class="text-blue-sda text-lg font-medium">Informasi Publik</a>
+            <a href="#" class="text-blue-sda text-lg font-medium">Publikasi</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-white overflow-hidden min-h-screen lg:h-screen" data-aos="fade-up">
+        <div class="grid grid-cols-1 lg:grid-cols-2 h-full">
+            <!-- Hero Content -->
+            <div class="px-6 sm:px-8 lg:px-8 py-12 lg:py-16 flex items-center">
+                <div class="max-w-2xl mx-auto lg:mx-0 space-y-6 lg:space-y-8">
+                    <div class="space-y-4">
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-sda leading-tight">
+                            #MENGELOLA AIR UNTUK NEGERI
+                        </h1>
+                        <p class="text-lg sm:text-xl lg:text-2xl font-medium text-gray-600 leading-relaxed">
+                            Siap Membangun Negeri Untuk Rakyat
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4 lg:space-y-6">
+                        <div class="space-y-2">
+                            <h2 class="text-xl lg:text-2xl font-semibold text-blue-sda">BWS Sulawesi III Palu</h2>
+                            <p class="text-base lg:text-xl text-blue-sda">Jl. Abdul Rachman Saleh No. 230 Palu, Sulawesi Tengah</p>
+                        </div>
+                        
+                        <button class="inline-flex items-center gap-2 bg-yellow-accent text-blue-sda px-4 lg:px-6 py-3 rounded-lg font-medium hover:bg-yellow-500 transition-colors">
+                            <img src="assets/icons/location.svg" alt="Location" class="w-5 h-5">
+                            Kunjungi Balai Kami
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hero Image Carousel -->
+            <div class="relative w-full h-64 lg:h-full overflow-hidden">
+                    <div id="heroCarousel" class="flex transition-transform duration-500 ease-in-out h-full">
+                        <div class="w-full h-full flex-shrink-0">
+                            <img src="assets/images/slider1.jpg" alt="Hero Image 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-full h-full flex-shrink-0">
+                            <img src="assets/images/slider2.jpg" alt="Hero Image 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-full h-full flex-shrink-0">
+                            <img src="assets/images/slider3.jpg" alt="Hero Image 3" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <!-- Carousel Indicators -->
+                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                        <button class="carousel-indicator w-4 h-4 bg-yellow-accent rounded-full transition-all duration-300" data-slide="0"></button>
+                        <button class="carousel-indicator w-4 h-4 bg-yellow-accent bg-opacity-50 rounded-full transition-all duration-300" data-slide="1"></button>
+                        <button class="carousel-indicator w-4 h-4 bg-yellow-accent bg-opacity-50 rounded-full transition-all duration-300" data-slide="2"></button>
+                    </div>
+                    
+                    <!-- Navigation Arrows -->
+                    <button class="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-300" id="prevBtn">
+                        <img src="assets/icons/arrow-left.svg" alt="Previous" class="w-5 h-5">
+                    </button>
+                    <button class="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-300" id="nextBtn">
+                        <img src="assets/icons/arrow-right.svg" alt="Next" class="w-5 h-5">
+                    </button>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & News Section -->
+    <section class="bg-cover bg-center bg-no-repeat" style="background-image: url('assets/images/section-bg.jpg');" data-aos="fade-right">
+        <!-- About Section -->
+        <div class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <img src="assets/images/img-section2.jpg" alt="About Image" class="w-full h-auto rounded-lg">
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <div class="space-y-4">
+                            <h2 class="text-2xl font-normal text-blue-sda tracking-widest">TENTANG KAMI</h2>
+                            <h3 class="text-3xl font-semibold text-blue-sda">BWS Sulawesi III Palu</h3>
+                            <p class="text-xl text-blue-sda leading-relaxed">
+                                Mempunyai tugas melaksanakan pengelolaan sumber daya air di wilayah sungai yang meliputi perencanaan, pelaksanaan konstruksi, operasi dan pemeliharaan dalam rangka konservasi dan pendayagunaan sumber daya air dan pengendalian daya rusak air pada sungai, danau, waduk, bendungan dan tampungan air lainnya, irigasi, air tanah, air baku, rawa, tambak dan pantai.
+                            </p>
+                        </div>
+                        
+                        <button class="inline-flex items-center gap-2 border-2 border-zinc-500 text-blue-sda px-6 py-3 rounded-lg font-medium hover:bg-zinc-50 transition-colors">
+                            <img src="assets/icons/contact.svg" alt="Contact" class="w-5 h-5">
+                            Kontak Kami
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- News Section -->
+        <div class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center space-y-4 mb-16">
+                    <h2 class="text-2xl font-normal text-blue-sda tracking-widest">BERITA TERKINI</h2>
+                    <h3 class="text-3xl font-semibold text-blue-sda">BWS Sulawesi III Palu</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <!-- News Card 1 -->
+                    <a href="detail.html" class="block group">
+                    <div class="bg-white rounded-lg shadow-sm border border-yellow-500 p-4 transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-lg cursor-pointer">
+                        <div class="space-y-4">
+                            <div class="space-y-2">
+                                <p class="text-xs font-bold text-blue-sda opacity-60">20 Juni 2025</p>
+                                <h4 class="text-sm font-semibold text-blue-sda leading-tight">
+                                    Tim Pemantauan Pengawasan SDA BWS Sulawesi III Palu melakukan inspeksi lapangan terhadap laporan pengrusakan prasarana SDA berupa penutup drainase
+                                </h4>
+                            </div>
+                            <img src="assets/images/thumbnail1-berita.jpg" alt="News Image" class="w-full h-[213px] object-cover rounded-lg">
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <!-- News Card 2 -->
+                    <a href="detail.html" class="block group">
+                    <div class="bg-white rounded-lg shadow-sm border border-yellow-500 p-4 transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-lg cursor-pointer">
+                        <div class="space-y-4">
+                            <div class="space-y-2">
+                                <p class="text-xs font-bold text-blue-sda opacity-60">19 Juni 2025</p>
+                                <h4 class="text-sm font-semibold text-blue-sda leading-tight">
+                                    DWP Kementerian PU Menggelar Sentra Kriya Pelatihan Keterampilan untuk Meningkatkan Kreativitas
+                                </h4>
+                            </div>
+                            <img src="assets/images/thumbnail2-berita.jpg" alt="News Image" class="w-full h-[213px] object-cover rounded-lg">
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <!-- News Card 3 -->
+                    <a href="detail.html" class="block group">
+                    <div class="bg-white rounded-lg shadow-sm border border-yellow-500 p-4 transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-lg cursor-pointer">
+                        <div class="space-y-4">
+                            <div class="space-y-2">
+                                <p class="text-xs font-bold text-blue-sda opacity-60">20 Juni 2025</p>
+                                <h4 class="text-sm font-semibold text-blue-sda leading-tight">
+                                    Tim Pemantauan Pengawasan SDA BWS Sulawesi III Palu melakukan inspeksi lapangan terhadap laporan pengrusakan prasarana SDA berupa penutup drainase
+                                </h4>
+                            </div>
+                            <img src="assets/images/thumbnail3-berita.jpg" alt="News Image" class="w-full h-[213px] object-cover rounded-lg">
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="text-center">
+                    <button class="inline-flex items-center border-2 border-zinc-500 text-blue-sda px-6 py-3 rounded-lg font-medium hover:bg-zinc-50 transition-colors">
+                        Lihat Semua
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="py-24" style="background-color: #F6F8FA;" data-aos="fade-left">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-2xl font-normal text-blue-sda tracking-widest">VIDEO</h2>
+                <h3 class="text-3xl font-semibold text-blue-sda">BWS Sulawesi III Palu</h3>
+            </div>
+            
+            <div class="border-2 rounded-lg p-6" style="border-color: #FFB703;">
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <!-- Video Card 1 -->
+                    <div class="rounded-2xl p-4" style="background-color: #FFE9B1;">
+                        <img src="assets/images/thumbnail1-video.jpg" alt="Video Thumbnail" class="w-full h-56 object-cover rounded-t-lg mb-4">
+                        <h4 class="text-base text-blue-sda leading-relaxed">
+                            PODCAST STAIR #11 : Peran dan Prestasi Unit Kepatuhan Intern BWS Sulawesi III Palu
+                        </h4>
+                    </div>
+                    
+                    <!-- Video Card 2 -->
+                    <div class="rounded-2xl p-4" style="background-color: #FFE9B1;">
+                        <img src="assets/images/thumbnail2-video.jpg" alt="Video Thumbnail" class="w-full h-56 object-cover rounded-t-lg mb-4">
+                        <h4 class="text-base text-blue-sda leading-relaxed">
+                            Progres Pekerjaan Penataan Hilir Sungai Palu oleh Balai Wilayah Sungai Sulawesi III Palu
+                        </h4>
+                    </div>
+                    
+                    <!-- Video Card 3 -->
+                    <div class="rounded-2xl p-4" style="background-color: #FFE9B1;">
+                        <img src="assets/images/thumbnail1-video.jpg" alt="Video Thumbnail" class="w-full h-56 object-cover rounded-t-lg mb-4">
+                        <h4 class="text-base text-blue-sda leading-relaxed">
+                            PODCAST STAIR #11 : Peran dan Prestasi Unit Kepatuhan Intern BWS Sulawesi III Palu
+                        </h4>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <button class="inline-flex items-center bg-yellow-500 text-blue-sda px-6 py-3 rounded-lg font-medium hover:bg-yellow-600 transition-colors">
+                        Lihat Semua
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Announcement Section -->
+    <section class="py-24" style="background-color: #F6F8FA;" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-2xl font-normal text-blue-sda tracking-widest">PENGUMUMAN & INFOGRAFIS</h2>
+                <h3 class="text-3xl font-semibold text-blue-sda">BWS Sulawesi III Palu</h3>
+            </div>
+            
+            <div class="bg-white border-2 border-blue-sda rounded-lg p-6">
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <img src="assets/images/thumbnail1-pengumuman.jpg" alt="Poster 1" class="w-full h-auto">
+                    <img src="assets/images/thumbnail2-pengumuman.jpg" alt="Poster 2" class="w-full h-auto">
+                    <img src="assets/images/thumbnail2-pengumuman.jpg" alt="Poster 3" class="w-full h-auto">
+                </div>
+                
+                <div class="text-center">
+                    <button class="inline-flex items-center bg-blue-sda text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                        Lihat Semua
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ministry News Section -->
+    <section class="py-24" style="background-color: #F6F8FA;" data-aos="fade-right">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-2xl font-normal text-blue-sda tracking-widest">BERITA</h2>
+                <h3 class="text-3xl font-semibold text-blue-sda">Kementerian PU</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <!-- News Card 1 -->
+                <div class="bg-white rounded-lg shadow-sm border border-yellow-500 p-4">
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <p class="text-xs font-bold text-blue-sda opacity-60">20 Juni 2025</p>
+                            <h4 class="text-sm font-semibold text-blue-sda leading-tight">
+                                Tim Pemantauan Pengawasan SDA BWS Sulawesi III Palu melakukan inspeksi lapangan terhadap laporan pengrusakan prasarana SDA berupa penutup drainase
+                            </h4>
+                        </div>
+                        <img src="assets/images/thumbnail1-berita.jpg" alt="News Image" class="w-full h-[213px] object-cover rounded-lg">
+                    </div>
+                </div>
+                
+                <!-- News Card 2 -->
+                <div class="bg-white rounded-lg shadow-sm border border-yellow-500 p-4">
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <p class="text-xs font-bold text-blue-sda opacity-60">19 Juni 2025</p>
+                            <h4 class="text-sm font-semibold text-blue-sda leading-tight">
+                                DWP Kementerian PU Menggelar Sentra Kriya Pelatihan Keterampilan untuk Meningkatkan Kreativitas
+                            </h4>
+                        </div>
+                        <img src="assets/images/thumbnail2-berita.jpg" alt="News Image" class="w-full h-[213px] object-cover rounded-lg">
+                    </div>
+                </div>
+                
+                <!-- News Card 3 -->
+                <div class="bg-white rounded-lg shadow-sm border border-yellow-500 p-4">
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <p class="text-xs font-bold text-blue-sda opacity-60">20 Juni 2025</p>
+                            <h4 class="text-sm font-semibold text-blue-sda leading-tight">
+                                Tim Pemantauan Pengawasan SDA BWS Sulawesi III Palu melakukan inspeksi lapangan terhadap laporan pengrusakan prasarana SDA berupa penutup drainase
+                            </h4>
+                        </div>
+                        <img src="assets/images/thumbnail3-berita.jpg" alt="News Image" class="w-full h-[213px] object-cover rounded-lg">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button class="inline-flex items-center bg-yellow-accent text-blue-sda px-6 py-3 rounded-lg font-medium hover:bg-yellow-500 transition-colors">
+                    Lihat Semua
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SDA News Section -->
+    <section class="py-24" style="background-color: #F6F8FA;" data-aos="fade-left">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-2xl font-normal text-blue-sda tracking-widest">BERITA</h2>
+                <h3 class="text-3xl font-semibold text-blue-sda">SDA</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <!-- News Card 1 -->
+                <div class="bg-white rounded-lg shadow-sm border border-blue-sda p-4">
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <p class="text-xs font-bold text-gray-600 opacity-60">20 Juni 2025</p>
+                            <h4 class="text-sm font-semibold text-gray-800 leading-tight">
+                                Sinergitas Stakeholders dalam Melestarikan Air Guna Mendukung Swasembada Pangan
+                            </h4>
+                        </div>
+                        <img src="assets/images/thumbnail1-berita-sda.jpg" alt="News Image" class="w-full h-[213px] object-cover rounded-lg">
+                    </div>
+                </div>
+                
+                <!-- News Card 2 -->
+                <div class="bg-white rounded-lg shadow-sm border border-blue-sda p-4">
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <p class="text-xs font-bold text-gray-600 opacity-60">19 Juni 2025</p>
+                            <h4 class="text-sm font-semibold text-gray-800 leading-tight">
+                                Kunjungan Studi Kementerian Pertanian, Perikanan, dan Sumber Daya Air Oman : Kolaborasi Indonesia dan Oman untuk Peningkatan Ketahanan Banjir
+                            </h4>
+                        </div>
+                        <img src="assets/images/thumbnail2-berita-sda.jpg" alt="News Image" class="w-full h-[213px] object-cover rounded-lg">
+                    </div>
+                </div>
+                
+                <!-- News Card 3 -->
+                <div class="bg-white rounded-lg shadow-sm border border-blue-sda p-4">
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <p class="text-xs font-bold text-gray-600 opacity-60">20 Juni 2025</p>
+                            <h4 class="text-sm font-semibold text-gray-800 leading-tight">
+                                Progress Fisik Mencapai 80,69%, Bendungan Mbay siap Dukung Program Swasembada Air dan Pangan
+                            </h4>
+                        </div>
+                        <img src="assets/images/thumbnail3-berita-sda.jpg" alt="News Image" class="w-full h-[213px] object-cover rounded-lg">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button class="inline-flex items-center bg-blue-sda text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                    Lihat Semua
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Logos Section -->
+    <section class="py-24" style="background-color: #F6F8FA;" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="p-6">
+                <!-- Desktop Grid -->
+                <div class="hidden md:grid md:grid-cols-4 lg:grid-cols-7 gap-8 items-center">
+                    <img src="assets/images/Logo-1.png" alt="Partner Logo 1" class="w-40 h-40 object-contain">
+                    <img src="assets/images/Logo-2.png" alt="Partner Logo 2" class="w-40 h-40 object-contain">
+                    <img src="assets/images/Logo-3.png" alt="Partner Logo 3" class="w-40 h-40 object-contain">
+                    <img src="assets/images/Logo-4.png" alt="Partner Logo 4" class="w-40 h-40 object-contain">
+                    <img src="assets/images/Logo-5.png" alt="Partner Logo 5" class="w-40 h-40 object-contain">
+                    <img src="assets/images/Logo-6.png" alt="Partner Logo 6" class="w-40 h-40 object-contain">
+                    <img src="assets/images/Logo-1.png" alt="Partner Logo 1" class="w-40 h-40 object-contain">
+                </div>
+                
+                <!-- Mobile Carousel -->
+                <div class="md:hidden relative overflow-hidden">
+                    <div id="mobilePartnerCarousel" class="flex transition-transform duration-500 ease-in-out">
+                        <div class="flex gap-6 w-full justify-center px-4">
+                            <img src="assets/images/Logo-1.png" alt="Partner Logo 1" class="w-28 h-28 object-contain flex-shrink-0">
+                            <img src="assets/images/Logo-2.png" alt="Partner Logo 2" class="w-28 h-28 object-contain flex-shrink-0">
+                        </div>
+                        <div class="flex gap-6 w-full justify-center px-4">
+                            <img src="assets/images/Logo-3.png" alt="Partner Logo 3" class="w-28 h-28 object-contain flex-shrink-0">
+                            <img src="assets/images/Logo-4.png" alt="Partner Logo 4" class="w-28 h-28 object-contain flex-shrink-0">
+                        </div>
+                        <div class="flex gap-6 w-full justify-center px-4">
+                            <img src="assets/images/Logo-5.png" alt="Partner Logo 5" class="w-28 h-28 object-contain flex-shrink-0">
+                            <img src="assets/images/Logo-6.png" alt="Partner Logo 6" class="w-28 h-28 object-contain flex-shrink-0">
+                        </div>
+                        <div class="flex gap-6 w-full justify-center px-4">
+                            <img src="assets/images/Logo-1.png" alt="Partner Logo 1" class="w-28 h-28 object-contain flex-shrink-0">
+                            <img src="assets/images/Logo-2.png" alt="Partner Logo 2" class="w-28 h-28 object-contain flex-shrink-0">
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Navigation Arrows -->
+                    <button class="absolute left-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-white bg-opacity-90 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-300 shadow-lg" id="mobilePartnerPrevBtn">
+                        <img src="assets/icons/arrow-left.svg" alt="Previous" class="w-4 h-4">
+                    </button>
+                    <button class="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-white bg-opacity-90 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-300 shadow-lg" id="mobilePartnerNextBtn">
+                        <img src="assets/icons/arrow-right.svg" alt="Next" class="w-4 h-4">
+                    </button>
+                </div>
+            </div>
+            
+
+            
+            <!-- Mobile Indicators -->
+            <div class="md:hidden flex justify-center gap-2 mt-8">
+                <div class="mobile-partner-indicator w-3 h-3 bg-yellow-accent rounded-full transition-all duration-300" data-slide="0"></div>
+                <div class="mobile-partner-indicator w-3 h-3 bg-yellow-accent bg-opacity-50 rounded-full transition-all duration-300" data-slide="1"></div>
+                <div class="mobile-partner-indicator w-3 h-3 bg-yellow-accent bg-opacity-50 rounded-full transition-all duration-300" data-slide="2"></div>
+                <div class="mobile-partner-indicator w-3 h-3 bg-yellow-accent bg-opacity-50 rounded-full transition-all duration-300" data-slide="3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-10">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Footer Left -->
+                <div class="space-y-8">
+                    <div class="flex items-center gap-3">
+                        <img src="assets/images/Logo-footer.png" alt="Logo PU" class="w-[425px] h-[74px] object-contain">
+                    </div>
+                    
+                    <p class="text-base text-blue-sda leading-relaxed">
+                        Jl. Abdurachman Saleh No. 230 Palu Provinsi Sulawesi Tengah, Indonesia<br>
+                        Telp. (0451) 482147      Fax. (0451) 482101
+                    </p>
+                    
+                    <div class="flex gap-6">
+                        <a href="#" class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                            <img src="assets/icons/facebook.svg" alt="Facebook" class="w-4 h-4">
+                        </a>
+                        <a href="#" class="w-8 h-8 bg-gradient-to-r from-yellow-400 via-red-500 to-purple-600 rounded flex items-center justify-center">
+                            <img src="assets/icons/instagram.svg" alt="Instagram" class="w-4 h-4">
+                        </a>
+                        <a href="#" class="w-8 h-8 bg-black rounded flex items-center justify-center">
+                            <img src="assets/icons/twitter.svg" alt="Twitter" class="w-4 h-4">
+                        </a>
+                        <a href="#" class="w-8 h-8 bg-red-600 rounded flex items-center justify-center">
+                            <img src="assets/icons/youtube.svg" alt="YouTube" class="w-4 h-4">
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Footer Right -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Services -->
+                    <div class="space-y-6">
+                        <h4 class="text-base font-medium text-blue-sda">Layanan</h4>
+                        <div class="space-y-2">
+                            <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">e-SISDA</a>
+                            <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">SIHKA</a>
+                            <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">Sistem Informasi Geografis</a>
+                            <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">Kaledo</a>
+                            <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">E-Rekomtek</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Services -->
+                    <div class="space-y-6">
+                        <div class="space-y-2">
+                            <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">Whistleblowing PU</a>
+                            <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">SP4N - Lapor!</a>
+                            <a href="#" class="block text-sm text-blue-sda hover:text-blue-600 transition-colors">EARR</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Visitor Data -->
+                    <div class="space-y-4">
+                        <h4 class="text-base font-medium text-blue-sda">Data Pengunjung</h4>
+                        <img src="assets/images/data-pengujung.jpg" alt="Visitor Data" class="w-48 h-44">
+                        <img src="assets/images/logo-vkan.png" alt="KAN Logo" class="w-36 h-16">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Copyright -->
+        <div class="bg-blue-sda px-4 py-3">
+            <div class="max-w-7xl mx-auto">
+                <p class="text-white text-xs font-normal text-center">
+                    Copyright © 2025. Balai Wilayah Sungai Sulawesi III Palu. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carousel JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hero Carousel
+            const carousel = document.getElementById('heroCarousel');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            let currentSlide = 0;
+            const totalSlides = 3;
+            
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    if (index === currentSlide) {
+                        indicator.classList.remove('bg-opacity-50');
+                        indicator.classList.add('bg-yellow-accent');
+                    } else {
+                        indicator.classList.add('bg-opacity-50');
+                        indicator.classList.remove('bg-yellow-accent');
+                    }
+                });
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+            
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Auto-play carousel
+            setInterval(nextSlide, 5000);
+            
+
+            
+            // Mobile Partner Carousel
+            const mobilePartnerCarousel = document.getElementById('mobilePartnerCarousel');
+            const mobilePartnerIndicators = document.querySelectorAll('.mobile-partner-indicator');
+            const mobilePartnerPrevBtn = document.getElementById('mobilePartnerPrevBtn');
+            const mobilePartnerNextBtn = document.getElementById('mobilePartnerNextBtn');
+            
+            let currentMobilePartnerSlide = 0;
+            const totalMobilePartnerSlides = 4;
+            
+            function updateMobilePartnerCarousel() {
+                mobilePartnerCarousel.style.transform = `translateX(-${currentMobilePartnerSlide * 100}%)`;
+                
+                // Update indicators
+                mobilePartnerIndicators.forEach((indicator, index) => {
+                    if (index === currentMobilePartnerSlide) {
+                        indicator.classList.remove('bg-opacity-50');
+                        indicator.classList.add('bg-yellow-accent');
+                    } else {
+                        indicator.classList.add('bg-opacity-50');
+                        indicator.classList.remove('bg-yellow-accent');
+                    }
+                });
+            }
+            
+            function nextMobilePartnerSlide() {
+                currentMobilePartnerSlide = (currentMobilePartnerSlide + 1) % totalMobilePartnerSlides;
+                updateMobilePartnerCarousel();
+            }
+            
+            function prevMobilePartnerSlide() {
+                currentMobilePartnerSlide = (currentMobilePartnerSlide - 1 + totalMobilePartnerSlides) % totalMobilePartnerSlides;
+                updateMobilePartnerCarousel();
+            }
+            
+            // Event listeners for mobile partner carousel
+            if (mobilePartnerNextBtn) {
+                mobilePartnerNextBtn.addEventListener('click', nextMobilePartnerSlide);
+            }
+            if (mobilePartnerPrevBtn) {
+                mobilePartnerPrevBtn.addEventListener('click', prevMobilePartnerSlide);
+            }
+            
+            mobilePartnerIndicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentMobilePartnerSlide = index;
+                    updateMobilePartnerCarousel();
+                });
+            });
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.querySelector('button.md\\:hidden');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
+            
+            if (mobileMenuBtn && mobileMenu && closeMobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.remove('-translate-x-full');
+                });
+                closeMobileMenu.addEventListener('click', function() {
+                    mobileMenu.classList.add('-translate-x-full');
+                });
+                // Optional: close menu when clicking outside
+                mobileMenu.addEventListener('click', function(e) {
+                    if (e.target === mobileMenu) {
+                        mobileMenu.classList.add('-translate-x-full');
+                    }
+                });
+            }
+        });
+    </script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 500,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 60,
+      });
+    </script>
+</body>
+</html>

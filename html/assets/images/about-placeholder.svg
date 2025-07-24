@@ -1,0 +1,6 @@
+<svg width="640" height="640" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="640" height="640" fill="#F3F4F6"/>
+    <rect x="20" y="20" width="600" height="600" fill="#E5E7EB" stroke="#D1D5DB" stroke-width="2"/>
+    <text x="320" y="320" text-anchor="middle" fill="#6B7280" font-size="24" font-weight="bold" font-family="Arial, sans-serif">About Image</text>
+    <text x="320" y="350" text-anchor="middle" fill="#9CA3AF" font-size="16" font-family="Arial, sans-serif">640x640</text>
+</svg> 
