@@ -44,6 +44,8 @@ class HomeController extends Controller
     // Get all data needed for homepage
     private function getHomepageData(): array
     {
+        $webSettings = $this->getWebSettings();
+        
         return [
             'sliderWebs' => $this->getSliderImages(),
             'articles' => $this->getInternalArticles(),
@@ -53,7 +55,10 @@ class HomeController extends Controller
             'eMonitorings' => $this->getEMonitorings(),
             'partnersLogos' => $this->getPartnersLogos(),
             'settingWebs' => $this->getSettingWebs(),
-            'footerInfo' => $this->getFooterInfo()
+            'footerInfo' => $this->getFooterInfo(),
+            'title' => $webSettings['site_title'] . ' - Mengelola Air untuk Negeri',
+            'description' => $webSettings['site_description'],
+            'webSettings' => $webSettings
         ];
     }
 

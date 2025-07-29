@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ $title ?? 'BWS Sulawesi III Palu - Mengelola Air untuk Negeri' }}</title>
-<meta name="description" content="Website resmi Balai Wilayah Sungai Sulawesi III Palu. Informasi, berita, layanan, dan publikasi seputar pengelolaan sumber daya air di Sulawesi Tengah.">
+<meta name="description" content="{{ $description ?? 'Website resmi Balai Wilayah Sungai Sulawesi III Palu. Informasi, berita, layanan, dan publikasi seputar pengelolaan sumber daya air di Sulawesi Tengah.' }}">
 <link rel="icon" type="image/png" href="{{ asset('assets/images/logo.png') }}">
 
 <!-- Tailwind CSS CDN -->

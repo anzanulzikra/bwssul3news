@@ -19,14 +19,25 @@
                 
                 <div class="space-y-4 lg:space-y-6">
                     <div class="space-y-2">
-                        <h2 class="text-xl lg:text-2xl font-semibold text-blue-sda">BWS Sulawesi III Palu</h2>
-                        <p class="text-base lg:text-xl text-blue-sda">Jl. Abdul Rachman Saleh No. 230 Palu, Sulawesi Tengah</p>
+                        <h2 class="text-xl lg:text-2xl font-semibold text-blue-sda">
+                            {{ isset($webSettings) ? $webSettings['site_title'] : 'BWS Sulawesi III Palu' }}
+                        </h2>
+                        <p class="text-base lg:text-xl text-blue-sda">
+                            {{ isset($footerInfo) ? $footerInfo['address'] : 'Jl. Abdul Rachman Saleh No. 230 Palu, Sulawesi Tengah' }}
+                        </p>
                     </div>
                     
+                    @if(isset($webSettings['map']) && $webSettings['map'])
+                    <a href="{{ $webSettings['map'] }}" target="_blank" class="inline-flex items-center gap-2 bg-yellow-accent text-blue-sda px-4 lg:px-6 py-3 rounded-lg font-medium hover:bg-yellow-500 transition-colors">
+                        <img src="{{ asset('assets/icons/location.svg') }}" alt="Location" class="w-5 h-5">
+                        Kunjungi Balai Kami
+                    </a>
+                    @else
                     <button class="inline-flex items-center gap-2 bg-yellow-accent text-blue-sda px-4 lg:px-6 py-3 rounded-lg font-medium hover:bg-yellow-500 transition-colors">
                         <img src="{{ asset('assets/icons/location.svg') }}" alt="Location" class="w-5 h-5">
                         Kunjungi Balai Kami
                     </button>
+                    @endif
                 </div>
             </div>
         </div>

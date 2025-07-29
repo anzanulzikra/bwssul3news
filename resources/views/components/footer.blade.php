@@ -9,10 +9,19 @@
                 </div>
                 
                 @if(isset($footerInfo))
-                <p class="text-base text-blue-sda leading-relaxed">
-                    {{ $footerInfo['address'] ?? 'Jl. Abdurachman Saleh No. 230 Palu Provinsi Sulawesi Tengah, Indonesia' }}<br>
-                    {{ $footerInfo['phone'] ?? 'Telp. (0451) 482147' }}      {{ $footerInfo['fax'] ?? 'Fax. (0451) 482101' }}
-                </p>
+                <div class="space-y-2">
+                    <p class="text-base text-blue-sda leading-relaxed">
+                        {{ $footerInfo['address'] ?? 'Jl. Abdurachman Saleh No. 230 Palu Provinsi Sulawesi Tengah, Indonesia' }}
+                    </p>
+                    <p class="text-base text-blue-sda">
+                        {{ $footerInfo['phone'] ?? 'Telp. (0451) 482147' }}      {{ $footerInfo['fax'] ?? 'Fax. (0451) 482101' }}
+                    </p>
+                    @if(isset($footerInfo['email']) && $footerInfo['email'])
+                    <p class="text-base text-blue-sda">
+                        Email: {{ $footerInfo['email'] }}
+                    </p>
+                    @endif
+                </div>
                 @else
                 <p class="text-base text-blue-sda leading-relaxed">
                     Jl. Abdurachman Saleh No. 230 Palu Provinsi Sulawesi Tengah, Indonesia<br>
@@ -21,16 +30,16 @@
                 @endif
                 
                 <div class="flex gap-6">
-                    <a href="#" class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                    <a href="{{ isset($footerInfo) && $footerInfo['social_facebook'] && $footerInfo['social_facebook'] !== '#' ? $footerInfo['social_facebook'] : '#' }}" target="_blank" class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center hover:bg-blue-700 transition-colors">
                         <img src="{{ asset('assets/icons/facebook.svg') }}" alt="Facebook" class="w-4 h-4">
                     </a>
-                    <a href="#" class="w-8 h-8 bg-gradient-to-r from-yellow-400 via-red-500 to-purple-600 rounded flex items-center justify-center">
+                    <a href="{{ isset($footerInfo) && $footerInfo['social_instagram'] && $footerInfo['social_instagram'] !== '#' ? $footerInfo['social_instagram'] : '#' }}" target="_blank" class="w-8 h-8 bg-gradient-to-r from-yellow-400 via-red-500 to-purple-600 rounded flex items-center justify-center hover:opacity-90 transition-opacity">
                         <img src="{{ asset('assets/icons/instagram.svg') }}" alt="Instagram" class="w-4 h-4">
                     </a>
-                    <a href="#" class="w-8 h-8 bg-black rounded flex items-center justify-center">
-                        <img src="{{ asset('assets/icons/twitter.svg') }}" alt="Twitter" class="w-4 h-4">
+                    <a href="{{ isset($footerInfo) && $footerInfo['social_x'] && $footerInfo['social_x'] !== '#' ? $footerInfo['social_x'] : '#' }}" target="_blank" class="w-8 h-8 bg-black rounded flex items-center justify-center hover:bg-gray-800 transition-colors">
+                        <img src="{{ asset('assets/icons/twitter.svg') }}" alt="X (Twitter)" class="w-4 h-4">
                     </a>
-                    <a href="#" class="w-8 h-8 bg-red-600 rounded flex items-center justify-center">
+                    <a href="{{ isset($footerInfo) && $footerInfo['social_youtube'] && $footerInfo['social_youtube'] !== '#' ? $footerInfo['social_youtube'] : '#' }}" target="_blank" class="w-8 h-8 bg-red-600 rounded flex items-center justify-center hover:bg-red-700 transition-colors">
                         <img src="{{ asset('assets/icons/youtube.svg') }}" alt="YouTube" class="w-4 h-4">
                     </a>
                 </div>
@@ -62,7 +71,17 @@
                 <!-- Visitor Data -->
                 <div class="space-y-4">
                     <h4 class="text-base font-medium text-blue-sda">Data Pengunjung</h4>
-                    <img src="{{ asset('assets/images/data-pengujung.jpg') }}" alt="Visitor Data" class="w-48 h-44">
+                    
+                    
+                    @if(isset($webSettings['visitor_counter_code']) && $webSettings['visitor_counter_code'])
+                        <div class="visitor-counter bg-white p-4 border border-gray-200 rounded">
+                            <div class="text-xs text-gray-500 mb-2">SuperCounters Loading...</div>
+                            {!! str_replace('//', 'https://', $webSettings['visitor_counter_code']) !!}
+                        </div>
+                    @else
+                        <img src="{{ asset('assets/images/data-pengujung.jpg') }}" alt="Visitor Data" class="w-48 h-44">
+                    @endif
+                    
                     <img src="{{ asset('assets/images/logo-vkan.png') }}" alt="KAN Logo" class="w-36 h-16">
                 </div>
             </div>
@@ -73,7 +92,11 @@
     <div class="bg-blue-sda px-4 py-3">
         <div class="max-w-7xl mx-auto">
             <p class="text-white text-xs font-normal text-center">
-                Copyright © {{ date('Y') }}. Balai Wilayah Sungai Sulawesi III Palu. All Rights Reserved.
+                @if(isset($footerInfo['copyright']) && $footerInfo['copyright'])
+                    {{ $footerInfo['copyright'] }}
+                @else
+                    Copyright © {{ date('Y') }}. Balai Wilayah Sungai Sulawesi III Palu. All Rights Reserved.
+                @endif
             </p>
         </div>
     </div>
