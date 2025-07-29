@@ -127,9 +127,9 @@
                             <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-lg">
                                 <div class="space-y-4">
                                     @if($related->featured_image)
-                                        <img src="{{ asset('storage/' . $related->featured_image) }}" alt="{{ $related->title }}" class="w-full h-32 object-cover rounded-lg">
+                                        <img src="{{ asset('storage/' . $related->featured_image) }}" alt="{{ $related->title }}" class="w-full h-40 object-cover rounded-lg">
                                     @else
-                                        <div class="w-full h-32 bg-gray-200 rounded-lg flex items-center justify-center">
+                                        <div class="w-full h-40 bg-gray-200 rounded-lg flex items-center justify-center">
                                             <span class="text-gray-400 text-sm">No Image</span>
                                         </div>
                                     @endif

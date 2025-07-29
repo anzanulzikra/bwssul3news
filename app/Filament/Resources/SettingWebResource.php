@@ -45,7 +45,8 @@ class SettingWebResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('value')
-                    ->searchable(),
+                    ->searchable()
+                    ->limit(100),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

@@ -117,45 +117,102 @@
             });
         }
 
-        // Partner Logo Carousel
-        const partnerLogoCarousel = document.getElementById('partnerLogoCarousel');
-        const partnerLogoIndicators = document.querySelectorAll('.partner-logo-indicator');
+        // Partner Logo Carousel - Responsive
+        const partnerPrevBtn = document.getElementById('partnerPrevBtn');
+        const partnerNextBtn = document.getElementById('partnerNextBtn');
         
-        if (partnerLogoCarousel && partnerLogoIndicators.length > 0) {
-            let currentPartnerLogoSlide = 0;
-            const totalPartnerLogoSlides = partnerLogoIndicators.length;
-            
-            function updatePartnerLogoCarousel() {
-                partnerLogoCarousel.style.transform = `translateX(-${currentPartnerLogoSlide * 100}%)`;
-                
-                // Update indicators
-                partnerLogoIndicators.forEach((indicator, index) => {
-                    if (index === currentPartnerLogoSlide) {
-                        indicator.classList.remove('bg-blue-sda', 'bg-opacity-60');
-                        indicator.classList.add('bg-yellow-accent');
-                    } else {
-                        indicator.classList.remove('bg-yellow-accent');
-                        indicator.classList.add('bg-blue-sda', 'bg-opacity-60');
-                    }
-                });
-            }
-            
-            function nextPartnerLogoSlide() {
-                currentPartnerLogoSlide = (currentPartnerLogoSlide + 1) % totalPartnerLogoSlides;
-                updatePartnerLogoCarousel();
-            }
-            
-            // Event listeners for partner logo indicators
-            partnerLogoIndicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
-                    currentPartnerLogoSlide = index;
-                    updatePartnerLogoCarousel();
-                });
-            });
-            
-            // Auto-play partner logo carousel
-            setInterval(nextPartnerLogoSlide, 4000);
+        // Mobile carousel
+        const mobileCarousel = document.getElementById('partnerLogoCarousel');
+        const mobileIndicators = document.querySelectorAll('.partner-logo-indicator[data-carousel="mobile"]');
+        
+        // Tablet carousel
+        const tabletCarousel = document.getElementById('partnerLogoCarouselTablet');
+        const tabletIndicators = document.querySelectorAll('.partner-logo-indicator[data-carousel="tablet"]');
+        
+        // Desktop carousel
+        const desktopCarousel = document.getElementById('partnerLogoCarouselDesktop');
+        const desktopIndicators = document.querySelectorAll('.partner-logo-indicator[data-carousel="desktop"]');
+        
+        let currentSlides = { mobile: 0, tablet: 0, desktop: 0 };
+        
+        function getCurrentCarousel() {
+            if (window.innerWidth < 640) return 'mobile';
+            if (window.innerWidth < 1024) return 'tablet';
+            return 'desktop';
         }
+        
+        function getCarouselElements(type) {
+            switch(type) {
+                case 'mobile':
+                    return { carousel: mobileCarousel, indicators: mobileIndicators };
+                case 'tablet':
+                    return { carousel: tabletCarousel, indicators: tabletIndicators };
+                case 'desktop':
+                    return { carousel: desktopCarousel, indicators: desktopIndicators };
+                default:
+                    return { carousel: null, indicators: [] };
+            }
+        }
+        
+        function updatePartnerCarousel(type) {
+            const { carousel, indicators } = getCarouselElements(type);
+            if (!carousel || indicators.length === 0) return;
+            
+            const currentSlide = currentSlides[type];
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.remove('bg-blue-sda', 'bg-opacity-60');
+                    indicator.classList.add('bg-yellow-accent');
+                } else {
+                    indicator.classList.remove('bg-yellow-accent');
+                    indicator.classList.add('bg-blue-sda', 'bg-opacity-60');
+                }
+            });
+        }
+        
+        function nextPartnerSlide() {
+            const currentType = getCurrentCarousel();
+            const { indicators } = getCarouselElements(currentType);
+            if (indicators.length > 0) {
+                currentSlides[currentType] = (currentSlides[currentType] + 1) % indicators.length;
+                updatePartnerCarousel(currentType);
+            }
+        }
+        
+        function prevPartnerSlide() {
+            const currentType = getCurrentCarousel();
+            const { indicators } = getCarouselElements(currentType);
+            if (indicators.length > 0) {
+                currentSlides[currentType] = (currentSlides[currentType] - 1 + indicators.length) % indicators.length;
+                updatePartnerCarousel(currentType);
+            }
+        }
+        
+        // Event listeners for navigation buttons
+        if (partnerNextBtn) partnerNextBtn.addEventListener('click', nextPartnerSlide);
+        if (partnerPrevBtn) partnerPrevBtn.addEventListener('click', prevPartnerSlide);
+        
+        // Event listeners for all indicators
+        [...mobileIndicators, ...tabletIndicators, ...desktopIndicators].forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                const carouselType = indicator.dataset.carousel;
+                const slideIndex = parseInt(indicator.dataset.slide);
+                currentSlides[carouselType] = slideIndex;
+                updatePartnerCarousel(carouselType);
+            });
+        });
+        
+        // Auto-play partner carousel
+        setInterval(nextPartnerSlide, 4000);
+        
+        // Update carousel on window resize
+        window.addEventListener('resize', () => {
+            const currentType = getCurrentCarousel();
+            updatePartnerCarousel(currentType);
+        });
 
 
         // Modal functionality
