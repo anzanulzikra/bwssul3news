@@ -9,79 +9,135 @@ use App\Models\Publikasi;
 use App\Models\EMonitoring;
 use App\Models\PartnersLogo;
 use App\Models\SettingWeb;
-
+use App\Http\Controllers\Traits\HasContentListing;
 
 class HomeController extends Controller
 {
+    use HasContentListing;
+    // Display the homepage
     public function index()
     {
-        // Hero carousel images
-        $sliderWebs = SliderWeb::orderBy('order')->limit(10)->get();
+        // Get all homepage data
+        $data = $this->getHomepageData();
 
-        // Berita internal BWS (published only)
-        $articles = Article::with(['category', 'tags', 'images'])
-            ->where('status', 'published')
-            ->orderBy('published_at', 'desc')
-            ->limit(10)
-            ->get();
-
-        // Berita Kementrian PU (artikel eksternal dengan kategori Kementrian PU)
-        $articleKementrianPU = ArticleEksternal::with('category')
-            ->whereHas('category', function($query) {
-                $query->where('name', 'Kementrian PU');
-            })
-            ->where('status', 'published')
-            ->orderBy('published_at', 'desc')
-            ->limit(10)
-            ->get();
-
-        // Berita SDA (artikel eksternal dengan kategori SDA)
-        $articleSDA = ArticleEksternal::with('category')
-            ->whereHas('category', function($query) {
-                $query->where('name', 'SDA');
-            })
-            ->where('status', 'published')
-            ->orderBy('published_at', 'desc')
-            ->limit(10)
-            ->get();
-
-        // Data untuk section video dan infografis
-        $publikasis = Publikasi::orderBy('created_at', 'desc')->limit(10)->get();
-        $eMonitorings = EMonitoring::orderBy('last_updated', 'desc')->limit(10)->get();
-        $partnersLogos = PartnersLogo::orderBy('order')->limit(10)->get();
-        $settingWebs = SettingWeb::orderBy('name')->limit(20)->get();
-
-        return view('index', compact(
-            'sliderWebs', 
-            'articles', 
-            'articleKementrianPU', 
-            'articleSDA',
-            'publikasis', 
-            'eMonitorings', 
-            'partnersLogos', 
-            'settingWebs'
-        ));
+        return view('index', $data);
     }
 
-    //Menampilkan halaman detail artikel
-    public function articleDetail($slug)
+    // Display article detail page
+    public function articleDetail(string $slug)
     {
-        // Ambil artikel berdasarkan slug (published only)
+        // Get article by slug (published only)
         $article = Article::with(['category', 'tags', 'images'])
             ->where('status', 'published')
             ->where('slug', $slug)
             ->firstOrFail();
 
-        // Artikel terkait dari kategori yang sama (exclude artikel saat ini)
-        $relatedArticles = Article::where('id', '!=', $article->id)
+        // Get related articles from same category
+        $relatedArticles = $this->getRelatedArticles($article);
+
+        // Get footer info
+        $footerInfo = $this->getFooterInfo();
+
+        return view('article.detail', compact('article', 'relatedArticles', 'footerInfo'));
+    }
+
+    // Get all data needed for homepage
+    private function getHomepageData(): array
+    {
+        return [
+            'sliderWebs' => $this->getSliderImages(),
+            'articles' => $this->getInternalArticles(),
+            'articleKementrianPU' => $this->getKementrianPUArticles(),
+            'articleSDA' => $this->getSDAArticles(),
+            'publikasis' => $this->getPublikasi(),
+            'eMonitorings' => $this->getEMonitorings(),
+            'partnersLogos' => $this->getPartnersLogos(),
+            'settingWebs' => $this->getSettingWebs(),
+            'footerInfo' => $this->getFooterInfo()
+        ];
+    }
+
+    // Get slider images for hero carousel
+    private function getSliderImages()
+    {
+        return SliderWeb::orderBy('order')->limit(10)->get();
+    }
+
+    // Get internal BWS articles
+    private function getInternalArticles()
+    {
+        return Article::with(['category', 'tags'])
             ->where('status', 'published')
+            ->whereRaw('CHAR_LENGTH(title) <= 190')
+            ->orderBy('published_at', 'desc')
+            ->limit(10)
+            ->get();
+    }
+
+    // Get Kementrian PU articles
+    private function getKementrianPUArticles()
+    {
+        return ArticleEksternal::with('category')
+            ->whereHas('category', function($query) {
+                $query->where('name', 'LIKE', '%Kementrian PU%')
+                      ->orWhere('name', 'LIKE', '%Kementerian PU%');
+            })
+            ->where('status', 'published')
+            ->whereRaw('CHAR_LENGTH(title) <= 190')
+            ->orderBy('published_at', 'desc')
+            ->limit(10)
+            ->get();
+    }
+
+    // Get SDA articles
+    private function getSDAArticles()
+    {
+        return ArticleEksternal::with('category')
+            ->whereHas('category', function($query) {
+                $query->where('name', 'SDA');
+            })
+            ->where('status', 'published')
+            ->whereRaw('CHAR_LENGTH(title) <= 190')
+            ->orderBy('published_at', 'desc')
+            ->limit(10)
+            ->get();
+    }
+
+    // Get publikasi data
+    private function getPublikasi()
+    {
+        return Publikasi::orderBy('created_at', 'desc')->limit(10)->get();
+    }
+
+    // Get e-monitoring data
+    private function getEMonitorings()
+    {
+        return EMonitoring::orderBy('last_updated', 'desc')->limit(10)->get();
+    }
+
+    // Get partners logos
+    private function getPartnersLogos()
+    {
+        return PartnersLogo::orderBy('order')->limit(10)->get();
+    }
+
+    // Get website settings
+    private function getSettingWebs()
+    {
+        return SettingWeb::orderBy('name')->limit(20)->get();
+    }
+
+    // Get related articles for article detail
+    private function getRelatedArticles(Article $article)
+    {
+        return Article::where('id', '!=', $article->id)
+            ->where('status', 'published')
+            ->whereRaw('CHAR_LENGTH(title) <= 190')
             ->when($article->category_id, function ($query, $categoryId) {
                 return $query->where('category_id', $categoryId);
             })
             ->orderBy('published_at', 'desc')
             ->limit(4)
             ->get();
-
-        return view('article.detail', compact('article', 'relatedArticles'));
     }
 }

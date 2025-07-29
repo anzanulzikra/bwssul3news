@@ -5,7 +5,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <img src="{{ asset('assets/images/img-section2.jpg') }}" alt="About Image" class="w-full h-auto rounded-lg">
+                    <img src="{{ asset('assets/images/img-section2.jpg') }}" alt="About Image" class="w-full h-auto">
                 </div>
                 
                 <div class="space-y-8">
@@ -17,7 +17,7 @@
                         </p>
                     </div>
                     
-                    <button class="inline-flex items-center gap-2 border-2 border-zinc-500 text-blue-sda px-6 py-3 rounded-lg font-medium hover:bg-zinc-50 transition-colors">
+                    <button class="inline-flex items-center gap-2 border-2 border-zinc-500 text-blue-sda px-6 py-3 font-medium hover:bg-zinc-50 transition-colors">
                         <img src="{{ asset('assets/icons/contact.svg') }}" alt="Contact" class="w-5 h-5">
                         Kontak Kami
                     </button>
@@ -37,7 +37,7 @@
             <div class="grid md:grid-cols-3 gap-6 mb-8">
                 @forelse($articles->take(3) as $article)
                 <a href="{{ route('article.detail', $article->slug) }}" class="block group">
-                    <div class="bg-white rounded-lg shadow-sm border border-yellow-500 p-4 transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-lg cursor-pointer">
+                    <div class="bg-white shadow-sm border border-yellow-500 p-4 transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-lg cursor-pointer">
                         <div class="space-y-4">
                             <div class="space-y-2">
                                 <p class="text-xs font-bold text-blue-sda opacity-60">{{ $article->published_at ? $article->published_at->format('d M Y') : $article->created_at->format('d M Y') }}</p>
@@ -46,9 +46,9 @@
                                 </h4>
                             </div>
                             @if($article->featured_image)
-                            <img src="{{ asset('storage/' . $article->featured_image) }}" alt="{{ $article->title }}" class="w-full h-[213px] object-cover rounded-lg">
+                            <img src="{{ asset('storage/' . $article->featured_image) }}" alt="{{ $article->title }}" class="w-full h-[213px] object-cover">
                             @else
-                            <div class="w-full h-[213px] bg-gray-200 rounded-lg flex items-center justify-center">
+                            <div class="w-full h-[213px] bg-gray-200 flex items-center justify-center">
                                 <span class="text-gray-400">No Image</span>
                             </div>
                             @endif
@@ -63,9 +63,9 @@
             </div>
             
             <div class="text-center">
-                <button class="inline-flex items-center border-2 border-zinc-500 text-blue-sda px-6 py-3 rounded-lg font-medium hover:bg-zinc-50 transition-colors">
+                <a href="{{ route('articles.listing') }}" class="inline-flex items-center border-2 border-zinc-500 text-blue-sda px-6 py-3 font-medium hover:bg-zinc-50 transition-colors">
                     Lihat Semua
-                </button>
+                </a>
             </div>
         </div>
     </div>

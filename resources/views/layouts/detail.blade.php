@@ -3,7 +3,7 @@
 <head>
     @include('components.head', ['title' => $title ?? null])
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 font-inter overflow-x-hidden">
     <!-- Main Container -->
     <div class="min-h-screen bg-gray-50">
         @include('components.navbar')

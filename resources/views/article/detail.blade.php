@@ -6,18 +6,18 @@
         <div class="flex items-center gap-2 flex-wrap">
             <div class="flex items-center gap-1">
                 <img src="{{ asset('assets/icons/home.svg') }}" alt="Home" class="w-4 h-4">
-                <a href="{{ route('home.index') }}" class="text-yellow-accent text-sm font-normal hover:underline">Beranda</a>
+                <a href="{{ route('home') }}" class="text-yellow-accent text-sm font-normal hover:underline">Beranda</a>
             </div>
             <span class="text-blue-sda text-sm font-normal">/</span>
-            <span class="text-yellow-accent text-sm font-normal">Berita</span>
+            <a href="{{ route('articles.listing') }}" class="text-yellow-accent text-sm font-normal hover:underline">Berita</a>
             <span class="text-blue-sda text-sm font-normal">/</span>
-            <span class="text-blue-sda text-sm font-normal">{{ Str::limit($article->title, 100) }}</span>
+            <span class="text-blue-sda text-sm font-normal">{{ Str::limit($article->title, 50) }}</span>
         </div>
         
         <!-- Back Button -->
-        <a href="{{ route('home.index') }}" class="mt-4 h-10 px-4 rounded-lg inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 transition-colors">
+        <a href="{{ route('articles.listing') }}" class="mt-4 h-10 px-4 rounded-lg inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 transition-colors">
             <img src="{{ asset('assets/icons/arrow-left.svg') }}" alt="Back" class="w-5 h-5">
-            <span class="text-blue-sda text-sm font-normal">Kembali</span>
+            <span class="text-blue-sda text-sm font-normal">Kembali ke Berita</span>
         </a>
     </div>
 

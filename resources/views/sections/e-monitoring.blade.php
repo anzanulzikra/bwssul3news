@@ -6,7 +6,7 @@
             <h3 class="text-3xl font-semibold text-blue-sda">BWS Sulawesi III Palu</h3>
         </div>
         
-        <div class="bg-white rounded-lg p-6" style="border: 2px solid #f1d8a9;">
+        <div class="bg-white p-6" style="border: 2px solid #f1d8a9;">
             @if($eMonitorings->count() > 0)
                 @php
                     $totalRecord = $eMonitorings->where('kode', '1')->first();

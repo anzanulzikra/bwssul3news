@@ -44,9 +44,11 @@ class CategoryResource extends Resource
                     ->maxLength(255),
                     Forms\Components\Select::make('type')
                     ->options([
-                        '1' => 'Internal',
-                        '2' => 'Eksternal',
+                        'internal' => 'Internal',
+                        'external' => 'Eksternal',
+                        'both' => 'Both (Internal & Eksternal)',
                     ])
+                    ->required()
             ]);
     }
 

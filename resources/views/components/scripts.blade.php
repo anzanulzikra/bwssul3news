@@ -157,25 +157,6 @@
             setInterval(nextPartnerLogoSlide, 4000);
         }
 
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const closeMobileMenu = document.getElementById('closeMobileMenu');
-        
-        if (mobileMenuBtn && mobileMenu && closeMobileMenu) {
-            mobileMenuBtn.addEventListener('click', function() {
-                mobileMenu.classList.remove('-translate-x-full');
-            });
-            closeMobileMenu.addEventListener('click', function() {
-                mobileMenu.classList.add('-translate-x-full');
-            });
-            // Optional: close menu when clicking outside
-            mobileMenu.addEventListener('click', function(e) {
-                if (e.target === mobileMenu) {
-                    mobileMenu.classList.add('-translate-x-full');
-                }
-            });
-        }
 
         // Modal functionality
         window.currentInstagramUrl = '';
