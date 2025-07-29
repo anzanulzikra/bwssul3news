@@ -23,7 +23,7 @@ Website resmi Balai Wilayah Sungai (BWS) Sulawesi III Palu yang berfungsi sebaga
 - **Advanced Search** - Pencarian artikel dengan filter
 - **Social Media Integration** - Sharing ke platform media sosial
 
-### ⚙️ **Admin Panel (Filament)**
+### ⚙️ **Admin Panel (Custom)**
 - **Content Management System** - Kelola artikel, kategori, tag
 - **Media Management** - Upload dan kelola gambar/dokumen
 - **User Management** - Sistem role dan permission
@@ -39,9 +39,9 @@ Website resmi Balai Wilayah Sungai (BWS) Sulawesi III Palu yang berfungsi sebaga
 
 ## 🚀 Tech Stack
 
-- **Framework**: Laravel 10.x
+- **Framework**: Laravel 12.x
 - **Frontend**: Blade Templates + Tailwind CSS
-- **Admin Panel**: Filament 3.x
+- **Admin Panel**: Custom by zikra.id
 - **Database**: MySQL/PostgreSQL
 - **Storage**: Local/S3 Compatible
 - **Cache**: Redis (optional)
@@ -271,7 +271,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### Version 2.0.0 (Current)
 - ✅ Responsive redesign dengan breakpoint optimal
-- ✅ Filament admin panel integration
+- ✅ Custom admin panel integration
 - ✅ Enhanced content management
 - ✅ Performance improvements
 - ✅ Mobile-first approach
@@ -287,6 +287,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 <div align="center">
+    <p><strong>by zikra.id </strong></p>
   <p><strong>Balai Wilayah Sungai Sulawesi III Palu</strong></p>
   <p><em>Kementerian Pekerjaan Umum dan Perumahan Rakyat</em></p>
   <p>Copyright © 2024. All Rights Reserved.</p>
