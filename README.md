@@ -1,7 +1,7 @@
 # BWS Sulawesi III Palu - Official Website
 
 <div align="center">
-  <img src="public/assets/images/logo.png" alt="BWS Sulawesi III Palu Logo" width="300">
+  <img src="https://bwssul3.zikra.id/assets/images/logo.png" alt="BWS Sulawesi III Palu Logo" width="300">
   
   **Website Resmi Balai Wilayah Sungai Sulawesi III Palu**
   
